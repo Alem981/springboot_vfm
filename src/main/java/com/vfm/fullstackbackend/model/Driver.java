@@ -9,12 +9,26 @@ public class Driver {
     @Id
     @GeneratedValue
     private Long id;
-    private String FirstName;
-    private String LastName;
-    private String Email;
-    private String PhoneNumber;
-    private int Age;
-    private int Salary;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
+    private int age;
+    private int salary;
+    
+    public Driver() {
+    	
+    }
+	public Driver(Long id, String firstName, String lastName, String email, String phoneNumber, int age, int salary) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.age = age;
+		this.salary = salary;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -22,41 +36,43 @@ public class Driver {
 		this.id = id;
 	}
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		this.firstName = firstName;
 	}
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public String getPhoneNumber() {
-		return PhoneNumber;
+		return phoneNumber;
 	}
 	public void setPhoneNumber(String phoneNumber) {
-		PhoneNumber = phoneNumber;
+		this.phoneNumber = phoneNumber;
 	}
 	public int getAge() {
-		return Age;
+		return age;
 	}
 	public void setAge(int age) {
-		Age = age;
+		this.age = age;
 	}
 	public int getSalary() {
-		return Salary;
+		return salary;
 	}
 	public void setSalary(int salary) {
-		Salary = salary;
+		this.salary = salary;
 	}
+    
+    
 
     
 }

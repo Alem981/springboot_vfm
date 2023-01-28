@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vfm.fullstackbackend.exception.UserNotFoundException;
 import com.vfm.fullstackbackend.model.Driver;
-import com.vfm.fullstackbackend.model.User;
 import com.vfm.fullstackbackend.repository.DriverRepository;
 
 
@@ -52,6 +52,13 @@ public class DriverController {
 	                    return driverRepository.save(driver);
 	                }).orElseThrow(() -> new UserNotFoundException(id));
 	    }
-
+	   @DeleteMapping("/driver/{id}")
+	    String deleteUser(@PathVariable Long id){
+	        if(!driverRepository.existsById(id)){
+	            throw new UserNotFoundException(id);
+	        }
+	        driverRepository.deleteById(id);
+	        return  "User with id "+id+" has been deleted success.";
+	    }
 
 }
