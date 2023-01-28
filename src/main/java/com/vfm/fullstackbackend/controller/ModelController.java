@@ -16,39 +16,43 @@ import com.vfm.fullstackbackend.services.ModelService;
 
 @RestController
 public class ModelController {
-@Autowired
-ModelService modelService;
-@RequestMapping("/models")
-public List<Model> getAllModels() {
-	return modelService.getAllModels();
-}
+	@Autowired
+	ModelService modelService;
 
-@RequestMapping("/model/{id}")
-public Optional<Model> getBrandById(@PathVariable int id) {
-	return modelService.getModelById(id);
-}
-@RequestMapping("brand/{id}/models")
-public List<Model> getModelsByBrandId(@PathVariable int id) {
-	return modelService.getModelByBrandId(id);
-}
+	@RequestMapping("/models")
+	public List<Model> getAllModels() {
+		return modelService.getAllModels();
+	}
 
-@RequestMapping("/models/{name}")
-public 	List<Model> getModelsByName(@PathVariable String name) {
-	return modelService.getModelsByName(name);
-}
+	@RequestMapping("/model/{id}")
+	public Optional<Model> getBrandById(@PathVariable int id) {
+		return modelService.getModelById(id);
+	}
 
-@RequestMapping(method=RequestMethod.PUT, value="/model/{id}")
-public void updateModel(@RequestBody Model model, @PathVariable int id) {
-	model.setBrand(new Brand(id, ""));
-	modelService.updateModel(model);
-}
-@RequestMapping(method=RequestMethod.POST, value="/brands/{id}/model")
-public void addModel(@RequestBody Model model, @PathVariable int id) {
-	model.setBrand(new Brand(id, ""));
-	modelService.addModel(model);
-}
-@RequestMapping(method=RequestMethod.DELETE, value="/model/{id}")
-public void removeModel(@PathVariable int id) {
-	modelService.removeModelById(id);
-}
+	@RequestMapping("brand/{id}/models")
+	public List<Model> getModelsByBrandId(@PathVariable int id) {
+		return modelService.getModelByBrandId(id);
+	}
+
+	@RequestMapping("/models/{name}")
+	public List<Model> getModelsByName(@PathVariable String name) {
+		return modelService.getModelsByName(name);
+	}
+
+	@RequestMapping(method = RequestMethod.PUT, value = "/model/{id}")
+	public void updateModel(@RequestBody Model model, @PathVariable int id) {
+		model.setBrand(new Brand(id, ""));
+		modelService.updateModel(model);
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/brands/{id}/model")
+	public void addModel(@RequestBody Model model, @PathVariable int id) {
+		model.setBrand(new Brand(id, ""));
+		modelService.addModel(model);
+	}
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/model/{id}")
+	public void removeModel(@PathVariable int id) {
+		modelService.removeModelById(id);
+	}
 }

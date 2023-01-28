@@ -37,10 +37,10 @@ public class VehicleController {
 		return vehicleService.getVehiclesByRegistration(registration);
 	}
 	
-	@RequestMapping(method=RequestMethod.PUT, value="/vehicle/{id}")
+	@RequestMapping(method=RequestMethod.PUT, value="/models/{id}/vehicle")
 	public void updateVehicle(@RequestBody Vehicle vehicle, @PathVariable int id) {
 		vehicle.setModel(new Model(id, "", null));
- 		vehicleService.addVehicle(vehicle);
+ 		vehicleService.updateVehicle(vehicle);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/models/{id}/vehicle")
@@ -48,7 +48,7 @@ public class VehicleController {
 		vehicle.setModel(new Model(id, "", null));
  		vehicleService.addVehicle(vehicle);
 	}
-	@RequestMapping(method=RequestMethod.DELETE, value="/vehicle/{id}")
+	@RequestMapping(method=RequestMethod.DELETE, value="models/vehicle/{id}")
 	public void removeVehicle(@PathVariable int id) {
 		vehicleService.removeVehicleById(id);
 	}
