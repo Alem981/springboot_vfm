@@ -1,5 +1,7 @@
 package com.vfm.fullstackbackend.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,17 +9,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
  
 public class Model {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id", updatable = false, nullable=false)
+	@Id	
 	private int id;
 	private String name;
-	@ManyToOne // One brand - many models
+	@OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
+	  private List<Vehicle> vehicles;
+	@ManyToOne(  cascade = CascadeType.PERSIST)
+	// One brand - many models
 	private Brand brand;
 	public Model() {
 		

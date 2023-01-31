@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import com.vfm.fullstackbackend.model.Model;
 import com.vfm.fullstackbackend.services.ModelService;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 public class ModelController {
 	@Autowired
 	ModelService modelService;

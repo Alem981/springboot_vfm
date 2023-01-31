@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import com.vfm.fullstackbackend.model.Brand;
 import com.vfm.fullstackbackend.services.BrandService;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 public class BrandController {
 	@Autowired
 	BrandService brandService;
